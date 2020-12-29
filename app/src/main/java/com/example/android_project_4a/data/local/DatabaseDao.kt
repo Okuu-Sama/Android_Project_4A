@@ -8,10 +8,10 @@ import com.example.android_project_4a.data.local.models.UserLocal
 
 @Dao
 interface DatabaseDao {
-    @Query("SELECT * FROM userlocal")
+    @Query("SELECT * FROM UserLocal")
     fun getAll(): List<UserLocal>
 
-    @Query("SELECT * FROM userlocal WHERE email LIKE :email LIMIT 1")
+    @Query("SELECT email,password FROM UserLocal WHERE email LIKE :email LIMIT 1")
     fun findByName(email: String): UserLocal?
 
     @Insert

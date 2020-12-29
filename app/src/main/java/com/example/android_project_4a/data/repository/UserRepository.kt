@@ -13,8 +13,22 @@ class UserRepository(
         databaseDao.insert(user.toData())
     }
 
-    fun getUser(email: String) : User? {
+    fun verifyUser(email: String) : Boolean
+    {
         val userLocal = databaseDao.findByName(email)
-        return userLocal?.toEntity()
+        if (userLocal != null)
+        {
+            return true
+        }
+        return false
+    }
+
+    fun getUser(email: String, password: String) : User? {
+        val userLocal = databaseDao.findByName(email)
+        if(userLocal?.password.equals(password))
+        {
+            return userLocal?.toEntity()
+        }
+        return null
     }
 }

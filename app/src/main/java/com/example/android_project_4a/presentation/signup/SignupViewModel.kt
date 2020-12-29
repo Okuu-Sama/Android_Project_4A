@@ -1,4 +1,4 @@
-package com.example.android_project_4a.presentation.main
+package com.example.android_project_4a.presentation.signup
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,25 +14,32 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MainViewModel(
-    private val getUserUseCase: GetUserUseCase
+class SignupViewModel(
+    private val createUserUseCase: CreateUserUseCase,
+    private val verifyUserUseCase: VerifyUserUseCase
 ) : ViewModel()
 {
 
-    val loginLiveData: MutableLiveData<LoginStatus> = MutableLiveData();
+    val signupLiveData: MutableLiveData<SignupStatus> = MutableLiveData();
 
-    fun onClickedLogin(emailUser: String, password: String) {
+    fun onClickedSignup(emailUser: String, password: String)
+    {
         viewModelScope.launch(Dispatchers.IO) {
-            val user = getUserUseCase.invoke(emailUser, password)
-            val loginStatus = if(user != null){
-                LoginSuccess(user.email)
-            }else{
-                LoginError
+            val exist =  verifyUserUseCase.invoke(emailUser)
+            val signupStatus = if(!exist)
+            {
+                val newUser = User(emailUser,password)
+                createUserUseCase.invoke(newUser)
+                SignupSuccess(newUser)
+
+            }else
+            {
+                SignupError
             }
 
             withContext(Dispatchers.Main)
             {
-                loginLiveData.value = loginStatus
+                signupLiveData.value = signupStatus
             }
         }
     }
