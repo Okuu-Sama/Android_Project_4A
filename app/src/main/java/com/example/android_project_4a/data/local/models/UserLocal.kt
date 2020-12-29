@@ -13,14 +13,16 @@ data class UserLocal(
     @PrimaryKey (autoGenerate = true) var uid: Int? = null
 }
 
-fun User.toData() : UserLocal{
+fun User.toData() : UserLocal
+{
     return UserLocal(
         email = email,
         password = password
     )
 }
 
-fun UserLocal.toEntity() : User{
+fun UserLocal.toEntity() : User
+{
     return User(
         email = email,
         password = password

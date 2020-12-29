@@ -5,11 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android_project_4a.domain.entity.User
 import com.example.android_project_4a.domain.usecase.CreateUserUseCase
-import com.example.android_project_4a.domain.usecase.GetUserUseCase
 import com.example.android_project_4a.domain.usecase.VerifyUserUseCase
-import com.example.android_project_4a.presentation.signup.SignupError
-import com.example.android_project_4a.presentation.signup.SignupStatus
-import com.example.android_project_4a.presentation.signup.SignupSuccess
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -20,7 +16,7 @@ class SignupViewModel(
 ) : ViewModel()
 {
 
-    val signupLiveData: MutableLiveData<SignupStatus> = MutableLiveData();
+    val signupLiveData: MutableLiveData<SignupStatus> = MutableLiveData()
 
     fun onClickedSignup(emailUser: String, password: String)
     {

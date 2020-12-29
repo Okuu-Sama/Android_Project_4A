@@ -3,13 +3,7 @@ package com.example.android_project_4a.presentation.main
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.android_project_4a.domain.entity.User
-import com.example.android_project_4a.domain.usecase.CreateUserUseCase
 import com.example.android_project_4a.domain.usecase.GetUserUseCase
-import com.example.android_project_4a.domain.usecase.VerifyUserUseCase
-import com.example.android_project_4a.presentation.signup.SignupError
-import com.example.android_project_4a.presentation.signup.SignupStatus
-import com.example.android_project_4a.presentation.signup.SignupSuccess
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -19,7 +13,7 @@ class MainViewModel(
 ) : ViewModel()
 {
 
-    val loginLiveData: MutableLiveData<LoginStatus> = MutableLiveData();
+    val loginLiveData: MutableLiveData<LoginStatus> = MutableLiveData()
 
     fun onClickedLogin(emailUser: String, password: String) {
         viewModelScope.launch(Dispatchers.IO) {
