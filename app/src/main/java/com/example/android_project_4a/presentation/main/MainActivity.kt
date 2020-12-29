@@ -1,5 +1,6 @@
 package com.example.android_project_4a.presentation.main
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,7 +14,8 @@ import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
 
-    val mainViewModel: MainViewModel by inject()
+    private val mainViewModel: MainViewModel by inject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,25 +25,49 @@ class MainActivity : AppCompatActivity() {
             {
               is LoginSuccess -> {
                   val intent = Intent(this, ListActivity::class.java)
-                  //intent.putExtra("elemnt", it.email)
                   intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                   startActivity(intent)
+                  finish()
               }
-              LoginError -> {
+              is LoginError -> {
                 MaterialAlertDialogBuilder(this)
                     .setTitle("Error")
                     .setMessage("Unknown Account or Incorrect Password")
-                    .setPositiveButton("OK") { dialog, which ->
+                    .setPositiveButton("OK") { dialog, _ ->
                         dialog.dismiss()
                     }
                     .show()
-            }
+              }
             }
         })
 
         login_button.setOnClickListener()
         {
-            mainViewModel.onClickedLogin(login_edit.text.toString().trim(), password_edit.text.toString())
+            when
+            {
+                login_edit.text.toString() == "" -> {
+                    MaterialAlertDialogBuilder(this)
+                        .setTitle("Error")
+                        .setMessage("Account field is empty!")
+                        .setPositiveButton("OK") { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        .show()
+                }
+                password_edit.text.toString() == "" -> {
+                    MaterialAlertDialogBuilder(this)
+                        .setTitle("Error")
+                        .setMessage("Password field is empty!")
+                        .setPositiveButton("OK") { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        .show()
+                }
+                else -> {
+                    mainViewModel.onClickedLogin(login_edit.text.toString().trim(),
+                        password_edit.text.toString())
+                }
+            }
         }
 
         create_account_button.setOnClickListener()
@@ -49,6 +75,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SignupActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
+            finish()
         }
     }
 }

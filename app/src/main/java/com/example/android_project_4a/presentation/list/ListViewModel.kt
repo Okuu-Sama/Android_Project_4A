@@ -14,7 +14,7 @@ class ListViewModel(
 ) : ViewModel()
 {
     
-    val characterLiveData: MutableLiveData<List<Granblue_Character>> = MutableLiveData();
+    val characterLiveData: MutableLiveData<List<Granblue_Character>> = MutableLiveData()
 
     fun onLoadingCharacter()
     {
@@ -39,14 +39,7 @@ class ListViewModel(
                 {
                     characterLiveData.value = null
                 }
-
             }
         }
-
-
-        //TODO processing
-        //Will process live data with the caracter clicked
-        //will have  a characterstatus.kt where if character is clicked and data could be retrieve then charactersuccess send to activity
-        //Activity then can load next activity with the received charracter data
     }
 }

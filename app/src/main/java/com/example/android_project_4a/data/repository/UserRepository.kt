@@ -7,9 +7,9 @@ import com.example.android_project_4a.domain.entity.User
 
 class UserRepository(
     private val databaseDao: DatabaseDao
-) {
+){
 
-    suspend fun createUser(user: User){
+    fun createUser(user: User){
         databaseDao.insert(user.toData())
     }
 
@@ -23,7 +23,8 @@ class UserRepository(
         return false
     }
 
-    fun getUser(email: String, password: String) : User? {
+    fun getUser(email: String, password: String) : User?
+    {
         val userLocal = databaseDao.findByName(email)
         if(userLocal?.password.equals(password))
         {

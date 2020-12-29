@@ -1,10 +1,5 @@
 package com.example.android_project_4a.domain.entity
 
-import com.google.gson.TypeAdapter
-import com.google.gson.stream.JsonReader
-import com.google.gson.stream.JsonToken
-import com.google.gson.stream.JsonWriter
-
 class Granblue_Character {
     private val name: String? = null
     private val maxHP = 0
