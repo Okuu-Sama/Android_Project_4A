@@ -51,6 +51,7 @@ fun createDataBase(context: Context): DatabaseDao
     return appDatabase.databaseDao()
 }
 
+//We fetch the Json using an API rest call
 inline fun <reified T>fetchAPI(gbfApiUrl: String) : T
 {
     val retrofit: Retrofit = Retrofit.Builder()

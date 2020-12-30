@@ -15,6 +15,9 @@ class MainViewModel(
 
     val loginLiveData: MutableLiveData<LoginStatus> = MutableLiveData()
 
+    //After the user click on the login button we process his entered data
+    //If his credential is valid we notify the main activity with a successful login status
+    //otherwise the error status is returned
     fun onClickedLogin(emailUser: String, password: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val user = getUserUseCase.invoke(emailUser, password)

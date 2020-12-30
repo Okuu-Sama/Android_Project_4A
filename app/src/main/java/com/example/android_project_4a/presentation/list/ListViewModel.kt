@@ -16,6 +16,9 @@ class ListViewModel(
     
     val characterLiveData: MutableLiveData<List<Granblue_Character>> = MutableLiveData()
 
+    //We try to load our list of character from the API rest call
+    //If the loading is success we notify the activity with a successful loading status
+    //otherwise there was an error when loading the list
     fun onLoadingCharacter()
     {
         viewModelScope.launch(Dispatchers.IO)
@@ -30,6 +33,7 @@ class ListViewModel(
                 LoadingError
             }
 
+            //If the loading is indeed successful we access and update the live data with the list inside the successful status
             withContext(Dispatchers.Main)
             {
                 if (loadingStatus is LoadingSuccess)

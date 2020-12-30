@@ -15,6 +15,7 @@ import org.koin.android.ext.android.inject
 
 class ListActivity : AppCompatActivity() {
 
+    //We initialize the view model using Koin injection
     private val listViewModel: ListViewModel by inject()
 
     private lateinit var linearLayoutManager: LinearLayoutManager
@@ -28,6 +29,7 @@ class ListActivity : AppCompatActivity() {
         linearLayoutManager = LinearLayoutManager(this)
         recycler_view.layoutManager = linearLayoutManager
 
+        //We create our adapter so that when clicking on a character we will load the details of this character on the next activity
         myAdapter = ListAdapter(object : ListAdapter.OnItemClickListener {
             override fun onItemClick(item: Granblue_Character?) {
                 val characterIntent = Intent(baseContext, DetailActivity::class.java)
@@ -41,6 +43,8 @@ class ListActivity : AppCompatActivity() {
         initViewModel()
     }
 
+    //We ask the view model to look for the data of the API call
+    //We update the data in our list of character accordingly
     private fun initViewModel()
     {
         listViewModel.characterLiveData.observe(this, Observer

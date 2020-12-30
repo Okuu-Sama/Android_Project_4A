@@ -18,12 +18,15 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.detail_activity)
 
+        //We fetch and convert the character received in the intent's extra data
         val characterJson = intent.getStringExtra("characterKey")
         val character = GsonBuilder().setLenient().create().fromJson(
             characterJson,
             Granblue_Character::class.java
         )
 
+        //We manually get the elements in our layout file
+        //Kotlin auto cast wasn't usable
         val layout = findViewById<ConstraintLayout>(R.id.detailLayout)
         val txtName = findViewById<TextView>(R.id.charactername_txt)
         val txtAtk = findViewById<TextView>(R.id.characteratk_txt)
@@ -36,6 +39,7 @@ class DetailActivity : AppCompatActivity() {
         val txtGender = findViewById<TextView>(R.id.charactergender_txt)
         val txtVoice = findViewById<TextView>(R.id.charactervoice_txt)
 
+        //We update the elements of the layout according to the data of the character
         Picasso.get().load(character.getImgUrl()).into(characterImage)
         txtName.text = character.getName()
         txtAtk.text = String.format("MAX ATK: %s", java.lang.String.valueOf(character.getMaxATK()))

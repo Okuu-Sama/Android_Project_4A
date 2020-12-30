@@ -18,6 +18,9 @@ class SignupViewModel(
 
     val signupLiveData: MutableLiveData<SignupStatus> = MutableLiveData()
 
+    //After the user click on the sign up button we verify if the account already exist
+    //If there is already a same account we signal the activity with a error state
+    //otherwise we create a new user notify the activity with the newly created user
     fun onClickedSignup(emailUser: String, password: String)
     {
         viewModelScope.launch(Dispatchers.IO) {
@@ -27,7 +30,6 @@ class SignupViewModel(
                 val newUser = User(emailUser,password)
                 createUserUseCase.invoke(newUser)
                 SignupSuccess(newUser)
-
             }else
             {
                 SignupError

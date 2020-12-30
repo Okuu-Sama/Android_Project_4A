@@ -12,11 +12,16 @@ import org.koin.android.ext.android.inject
 
 class SignupActivity : AppCompatActivity() {
 
+    //We initialize the view model using Koin injection
     private val signupViewModel: SignupViewModel by inject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.signup_activity)
 
+        //We observe the data from the view model
+        //If we have a successful sign up, a user was created and we access the list screen
+        //otherwise there was an error when processing the data
         signupViewModel.signupLiveData.observe(this, Observer
         {
             when(it)
@@ -39,6 +44,8 @@ class SignupActivity : AppCompatActivity() {
             }
         })
 
+        //When the user press the sign up button we process the data he entered in the text fields
+        //An error is displayed if he tried to sign up with no credentials entered
         signup_button.setOnClickListener()
         {
             when {

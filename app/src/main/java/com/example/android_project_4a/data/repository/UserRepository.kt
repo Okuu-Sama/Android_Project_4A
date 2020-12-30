@@ -9,10 +9,12 @@ class UserRepository(
     private val databaseDao: DatabaseDao
 ){
 
+    //Calling this function will insert the specified user in the database
     fun createUser(user: User){
         databaseDao.insert(user.toData())
     }
 
+    //We verify the if the given data exist in the DB
     fun verifyUser(email: String) : Boolean
     {
         val userLocal = databaseDao.findByName(email)
@@ -23,6 +25,7 @@ class UserRepository(
         return false
     }
 
+    //We fetch a certain user from the DB
     fun getUser(email: String, password: String) : User?
     {
         val userLocal = databaseDao.findByName(email)

@@ -16,8 +16,10 @@ class ListAdapter(
     private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
+    //Our list of character notified when receiving new data
     private var characterList: List<Granblue_Character> by Delegates.observable(emptyList()){ _, _, _ -> notifyDataSetChanged()}
 
+    //Custom onClickListener interface to override the default one of the elements of the recycler view
     interface OnItemClickListener
     {
         fun onItemClick(item: Granblue_Character?)
@@ -33,6 +35,7 @@ class ListAdapter(
     ) : RecyclerView.ViewHolder(v),
             View.OnClickListener
     {
+        //elements from our view
         private var layout: View = v
         private var txtHeader: TextView? = null
         private var txtFooter: TextView? = null
@@ -46,10 +49,12 @@ class ListAdapter(
             characterIcon = v.findViewById(R.id.icon)
         }
 
+        //The onClick function is simply unused because we use a custom onClickListener for out elements
         override fun onClick(v: View?) {
            return
         }
 
+        //Secondary function to bind the data from the list the elements of our view
         fun bindCharacter(character: Granblue_Character)
         {
             val iconPath = character.getIconPath()

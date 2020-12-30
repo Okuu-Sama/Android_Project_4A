@@ -1,3 +1,24 @@
 <resources>
-    <string name="app_name">Android_Project_4A</string>
+    <string name="app_name">My GBF V2</string>
+    <string name="login_hint">Login</string>
+    <string name="password_hint">Password</string>
+    <string name="login_button_text">Login</string>
+    <string name="create_account_button_text">Create Account</string>
+    <string name="email_hint">Email</string>
+    <string name="sign_up_button_text">Sign up</string>
+    <string name="character_image">character_image</string>
+    <string name="textname_desc">Textname</string>
+    <string name="textmaxatk_desc">Textmaxatk</string>
+    <string name="textmaxhp_desc">Textmaxhp</string>
+    <string name="textrace_desc">Textrace</string>
+    <string name="textelement_desc">Textelement</string>
+    <string name="textstyle_desc">Textstyle</string>
+    <string name="textspeciality_desc">Textspeciality</string>
+    <string name="textvoice_desc">Textvoice</string>
+    <string name="textgender_desc">Textgender</string>
+    <string name="row_layout_txt_desc">Description</string>
+    <string name="row_layout_title_text">Example application</string>
+    <string name="imageview_desc">image</string>
+    <string name="login_image">login_image</string>
+    <string name="image_signup">image_signup</string>
 </resources>

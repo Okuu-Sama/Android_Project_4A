@@ -14,12 +14,16 @@ import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
 
+    //We initialize the view model using Koin injection
     private val mainViewModel: MainViewModel by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //We observe the data from the view model
+        //If we have a successful log in, we got the user profile and we access the list screen
+        //otherwise there was an error when processing the data (wrong credentials / unknown account)
         mainViewModel.loginLiveData.observe(this, Observer {
             when(it)
             {
@@ -41,6 +45,8 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        //When the user press the login button we process the data he entered in the text fields
+        //An error is displayed if he tried to login with no credentials entered or wrong credential
         login_button.setOnClickListener()
         {
             when
@@ -70,6 +76,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        //Clicking on the create account button lead to the account creation screen
         create_account_button.setOnClickListener()
         {
             val intent = Intent(this, SignupActivity::class.java)
