@@ -33,12 +33,15 @@ Les données sont stockées localement et simplement utilisées pour se connecte
   >>Le cas des champs vides est supporté
   
 ![screen_login](https://user-images.githubusercontent.com/62256154/103322141-5824ad00-4a80-11eb-9073-3bec3ff62ead.PNG)
+![image](https://user-images.githubusercontent.com/62256154/103322842-3ed13000-4a83-11eb-961c-2f9282b973b9.png)
+![image](https://user-images.githubusercontent.com/62256154/103322867-645e3980-4a83-11eb-8b90-b7596799ad56.png)
 
 ### Signup Screen
 - Ecran de création de compte (accessible depuis l'écran de connexion) :
   >>Le cas des champs vides est supporté
   
 ![screen_signup](https://user-images.githubusercontent.com/62256154/103321534-763cde00-4a7d-11eb-8520-3cbf7ad7ff7d.PNG)
+![image](https://user-images.githubusercontent.com/62256154/103322888-80fa7180-4a83-11eb-9bd3-7406a106e124.png)
 
 ### Liste d'éléments
 - Listes de personnages à l'aide d'une recycler view aprés s'être correctement connecté ou enregistré :
